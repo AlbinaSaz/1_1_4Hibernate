@@ -23,7 +23,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void createUsersTable() {
         try {
             Statement statement = connection.createStatement();
-            String command = "CREATE TABLE USER (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR (30),lastName VARCHAR (30), age INT )";
+            String command = "CREATE TABLE USERS (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR (30),lastName VARCHAR (30), age INT )";
             int result = statement.executeUpdate(command);
             statement.close();
         } catch (SQLException e) {
@@ -34,7 +34,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         try {
             Statement statement = connection.createStatement();
-            String command = "DROP TABLE IF EXISTS  USER";
+            String command = "DROP TABLE IF EXISTS  USERS";
             statement.executeUpdate(command);
             statement.close();
 
@@ -47,13 +47,13 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO USER (name,lastName, age) VALUES (?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO USERS (name,lastName, age) VALUES (?,?,?)");
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            System.out.println("User с именем "+ name+" добавлен в таблицу");
+            System.out.println("User с именем " + name + " добавлен в таблицу");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -62,7 +62,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         try {
             Statement statement = connection.createStatement();
-            String command = "DELETE FROM USER WHERE id=" + id;
+            String command = "DELETE FROM USERS WHERE id=" + id;
             statement.executeUpdate(command);
             statement.close();
 
@@ -95,7 +95,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
         try {
             Statement statement = connection.createStatement();
-            String command = "DELETE FROM USER";
+            String command = "DELETE FROM USERS";
             statement.executeUpdate(command);
             statement.close();
 

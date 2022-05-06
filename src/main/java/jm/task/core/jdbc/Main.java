@@ -10,19 +10,16 @@ import jm.task.core.jdbc.util.Util;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Util.getConnection();
+    public static void main(String[] args) {
         UserService userService = new UserServiceImpl();
         userService.createUsersTable();
-        userService.saveUser("Nicol","Pi", (byte) 12);
-        userService.saveUser("Nicolay","Pic", (byte) 18);
-        userService.saveUser("Nick","Petros", (byte) 45);
-        userService.saveUser("Ni","Petroser", (byte) 23);
+        userService.saveUser("IVAN","IVANOS", (byte) 19);
+        userService.saveUser("PETR","IVANOS", (byte) 12);
+        userService.saveUser("SERG","CHIVA", (byte) 13);
+        userService.saveUser("ALICA","IVANOVA", (byte) 45);
         userService.getAllUsers();
         userService.cleanUsersTable();
         userService.dropUsersTable();
-
-
     }
 }
 
